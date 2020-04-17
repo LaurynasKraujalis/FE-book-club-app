@@ -11,6 +11,8 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/newbook" linkText="Post new book" />
           <NavbarItem path="/profile" linkText="My profile" />
+          <NavbarItem path="/signup" linkText="Sign up" />
+          <NavbarItem path="/login" linkText="Log in" />
         </Nav>
       </Navbar.Collapse>
       <Navbar.Collapse className="justify-content-end"></Navbar.Collapse>

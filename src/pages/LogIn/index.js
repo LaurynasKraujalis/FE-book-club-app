@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
+
+import { logInThunk } from "../../store/user/actions";
+
 import { Link } from "react-router-dom";
 import { Col, Form, Container, Button } from "react-bootstrap";
 
@@ -12,7 +14,7 @@ export default function LogIn() {
   function submitForm(event) {
     event.preventDefault();
 
-    // dispatch(login(email, password));
+    dispatch(logInThunk(email, password));
 
     setEmail("");
     setPassword("");

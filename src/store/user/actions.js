@@ -4,10 +4,28 @@ import { apiUrl } from "../../config/constants";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 
 const loginSuccess = (userWithToken) => {
-  console.log(`hi 2`);
   return {
     type: LOGIN_SUCCESS,
     payload: userWithToken,
+  };
+};
+
+export const logInThunk = (email, password) => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await axios.post(`${apiUrl}/login`, {
+        email,
+        password,
+      });
+
+      dispatch(loginSuccess(response.data));
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+      } else {
+        console.log(error.message);
+      }
+    }
   };
 };
 

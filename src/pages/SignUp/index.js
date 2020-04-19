@@ -15,8 +15,7 @@ export default function SignUp() {
 
   function submitForm(event) {
     event.preventDefault();
-    console.log(`whats in the form?`, name, email, password);
-    console.log(`check 1`);
+
     dispatch(signUpThunk(name, email, password));
 
     setEmail("");

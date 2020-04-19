@@ -1,8 +1,17 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+
 import NavbarItem from "./NavbarItem";
+import { logOut } from "../../store/user/actions";
+import { selectToken } from "../../store/user/selectors";
+
+import { Navbar, Nav } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default function Navigation() {
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -11,8 +20,12 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/newbook" linkText="Post new book" />
           <NavbarItem path="/profile" linkText="My profile" />
-          <NavbarItem path="/signup" linkText="Sign up" />
-          <NavbarItem path="/login" linkText="Log in" />
+
+          {token ? null : <NavbarItem path="/login" linkText="Log in" />}
+
+          {token ? (
+            <Button onClick={() => dispatch(logOut())}>Logout</Button>
+          ) : null}
         </Nav>
       </Navbar.Collapse>
       <Navbar.Collapse className="justify-content-end"></Navbar.Collapse>

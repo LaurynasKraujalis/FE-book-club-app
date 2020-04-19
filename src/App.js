@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
+import { getUserWithStoredToken } from "./store/user/actions";
 import Homepage from "./pages/Home";
 import MyProfile from "./pages/MyProfile";
 import BookDetails from "./pages/BookDetails";
@@ -10,6 +12,11 @@ import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
+
   return (
     <main>
       <Navigation />

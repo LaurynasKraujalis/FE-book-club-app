@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { Link } from "react-router-dom";
+
+import { signUpThunk } from "../../store/user/actions";
 
 import { Col, Button, Container, Form } from "react-bootstrap";
 
@@ -14,8 +15,9 @@ export default function SignUp() {
 
   function submitForm(event) {
     event.preventDefault();
-
-    // dispatch(signUp(name, email, password));
+    console.log(`whats in the form?`, name, email, password);
+    console.log(`check 1`);
+    dispatch(signUpThunk(name, email, password));
 
     setEmail("");
     setPassword("");

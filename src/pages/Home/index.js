@@ -26,6 +26,8 @@ export default function Homepage() {
             author={book.author}
             imageUrl={book.imageUrl}
             title={book.title}
+            rating={book.ratings}
+            user={book.user}
           />
         );
       })}

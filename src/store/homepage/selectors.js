@@ -1,1 +1,1 @@
-export const selectToken = (state) => state.allBooks;
+export const selectAllBooks = (state) => state.allBooks;

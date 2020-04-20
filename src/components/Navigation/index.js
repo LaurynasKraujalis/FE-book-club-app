@@ -18,11 +18,12 @@ export default function Navigation() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
-          <NavbarItem path="/newbook" linkText="Post new book" />
-          <NavbarItem path="/profile" linkText="My profile" />
+          {token ? (
+            <NavbarItem path="/newbook" linkText="Post new book" />
+          ) : null}
 
           {token ? null : <NavbarItem path="/login" linkText="Log in" />}
-
+          {token ? <NavbarItem path="/profile" linkText="My profile" /> : null}
           {token ? (
             <Button onClick={() => dispatch(logOut())}>Logout</Button>
           ) : null}

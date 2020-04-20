@@ -21,7 +21,7 @@ export default function HomepageDisplay(props) {
       <Container>
         <Card>
           <Card.Body className="text-center">
-            <Nav.Link as={NavLink} to="/books/:id">
+            <Nav.Link as={NavLink} to={`/books/${props.id}`}>
               <Card.Img
                 style={{ height: "100px" }}
                 variant="right"

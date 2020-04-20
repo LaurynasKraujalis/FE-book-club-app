@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/actions";
 import Homepage from "./pages/Home";
 import MyProfile from "./pages/MyProfile";
-import BookDetails from "./pages/BookDetails";
+import DetailsPage from "./pages/DetailsPage";
 import NewBook from "./pages/NewBook";
 import Navigation from "./components/Navigation/index";
 import SignUp from "./pages/SignUp";
@@ -22,7 +22,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route path="/book/:id" component={BookDetails} />
+        <Route path="/books/:id" component={DetailsPage} />
         <Route path="/newbook" component={NewBook} />
         <Route path="/profile" component={MyProfile} />
         <Route path="/signup" component={SignUp} />

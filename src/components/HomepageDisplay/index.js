@@ -1,4 +1,6 @@
 import React from "react";
+import Nav from "react-bootstrap/Nav";
+import { NavLink } from "react-router-dom";
 import { Container, Card } from "react-bootstrap";
 
 export default function HomepageDisplay(props) {
@@ -19,12 +21,14 @@ export default function HomepageDisplay(props) {
       <Container>
         <Card>
           <Card.Body className="text-center">
-            <Card.Img
-              style={{ height: "100px" }}
-              variant="right"
-              src={props.imageUrl}
-              className="mb-3"
-            />
+            <Nav.Link as={NavLink} to="/books/:id">
+              <Card.Img
+                style={{ height: "100px" }}
+                variant="right"
+                src={props.imageUrl}
+                className="mb-3"
+              />
+            </Nav.Link>
             <Card.Subtitle>Rating: {avarageRating}</Card.Subtitle>
             <Card.Title>{props.title}</Card.Title>
             <Card.Title>{props.author}</Card.Title>

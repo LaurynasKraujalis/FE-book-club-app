@@ -1,6 +1,21 @@
-import React from "react";
-import { Jumbotron, Container } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import { getAllBooks } from "../../store/homepage/actions";
+import HomepageDisplay from "../../components/HomepageDisplay";
+
+import { Container } from "react-bootstrap";
 
 export default function Homepage() {
-  return <Container> Homapage</Container>;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllBooks());
+  }, [dispatch]);
+
+  return (
+    <Container>
+      <HomepageDisplay />
+    </Container>
+  );
 }

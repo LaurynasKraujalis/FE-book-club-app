@@ -1,7 +1,7 @@
 import React from "react";
 import SearchNewBook from "../../components/SearchNewBook";
 
-import { Jumbotron, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 export default function NewBook() {
   return (

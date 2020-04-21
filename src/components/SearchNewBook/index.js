@@ -43,6 +43,7 @@ export default function SearchNewBook() {
           author={newBook.author}
           title={newBook.title}
           imageUrl={newBook.imageUrl}
+          description={newBook.description}
         />
       ) : (
         <Container>
@@ -54,6 +55,7 @@ export default function SearchNewBook() {
                 author={result.volumeInfo.authors}
                 title={result.volumeInfo.title}
                 imageUrl={result.volumeInfo.imageLinks.thumbnail}
+                description={result.volumeInfo.description}
               />
             );
           })}

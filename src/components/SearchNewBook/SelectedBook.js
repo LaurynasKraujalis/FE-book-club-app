@@ -1,14 +1,17 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
+import { postNewBook } from "../../store/newBook/actions";
+
 import { Container, Card, Button } from "react-bootstrap";
 
 export default function SelectedBook(props) {
   const dispatch = useDispatch();
 
-  // const chooseHandler = (id, author, title, imageUrl) => {
-  //   dispatch(storeNewBook(id, author, title, imageUrl));
-  // };
+  const postHandler = (author, title, imageUrl, description) => {
+    console.log(`descri?`, description);
+    dispatch(postNewBook(author, title, imageUrl, description));
+  };
 
   return (
     <div>
@@ -27,14 +30,14 @@ export default function SelectedBook(props) {
             <Button
               className="mb-2"
               variant="danger"
-              // onClick={() =>
-              //   chooseHandler(
-              //     props.id,
-              //     props.author,
-              //     props.title,
-              //     props.imageUrl
-              //   )
-              // }
+              onClick={() =>
+                postHandler(
+                  props.author,
+                  props.title,
+                  props.imageUrl,
+                  props.description
+                )
+              }
             >
               Post
             </Button>

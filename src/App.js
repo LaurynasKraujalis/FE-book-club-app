@@ -11,6 +11,8 @@ import Navigation from "./components/Navigation/index";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 
+import "./App.css";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -18,7 +20,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <main>
+    <main className="main-background">
       <Navigation />
       <Switch>
         <Route exact path="/" component={Homepage} />

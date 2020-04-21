@@ -8,8 +8,8 @@ import { Container, Card, Button } from "react-bootstrap";
 export default function ShowSearch(props) {
   const dispatch = useDispatch();
 
-  const chooseHandler = (id, author, title, imageUrl) => {
-    dispatch(storeNewBook(id, author, title, imageUrl));
+  const chooseHandler = (id, author, title, imageUrl, description) => {
+    dispatch(storeNewBook(id, author, title, imageUrl, description));
   };
 
   return (
@@ -34,7 +34,8 @@ export default function ShowSearch(props) {
                   props.id,
                   props.author,
                   props.title,
-                  props.imageUrl
+                  props.imageUrl,
+                  props.description
                 )
               }
             >

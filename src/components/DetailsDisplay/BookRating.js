@@ -18,7 +18,7 @@ export default function BookRating(props) {
 
     console.log(`whats the rating?`, avarageRating);
 
-    return { avarageRating };
+    return <p>{avarageRating}</p>;
   };
   return (
     <div>

@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 
 export default function NewBook() {
   return (
-    <Container>
+    <Container className="text-center">
       <SearchNewBook />
     </Container>
   );

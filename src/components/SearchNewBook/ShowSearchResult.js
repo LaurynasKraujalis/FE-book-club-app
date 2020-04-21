@@ -15,7 +15,7 @@ export default function ShowSearch(props) {
   return (
     <div>
       <Container>
-        <Card>
+        <Card bg="secondary" text="light">
           <Card.Body className="text-center">
             <Card.Img
               style={{ height: "100px" }}
@@ -28,7 +28,7 @@ export default function ShowSearch(props) {
 
             <Button
               className="mb-2"
-              variant="success"
+              variant="danger"
               onClick={() =>
                 chooseHandler(
                   props.id,

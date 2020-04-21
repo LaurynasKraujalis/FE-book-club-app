@@ -25,7 +25,9 @@ export default function Navigation() {
           {token ? null : <NavbarItem path="/login" linkText="Log in" />}
           {token ? <NavbarItem path="/profile" linkText="My profile" /> : null}
           {token ? (
-            <Button onClick={() => dispatch(logOut())}>Logout</Button>
+            <Button variant="danger" onClick={() => dispatch(logOut())}>
+              Logout
+            </Button>
           ) : null}
         </Nav>
       </Navbar.Collapse>

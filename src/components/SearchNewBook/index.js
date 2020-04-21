@@ -32,7 +32,9 @@ export default function SearchNewBook() {
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         ></input>
-        <Button onClick={searchBook}>Search</Button>
+        <Button variant="danger" onClick={searchBook}>
+          Search
+        </Button>
       </div>
       {newBook.id ? (
         <SelectedBook

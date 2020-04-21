@@ -13,10 +13,10 @@ export default function SelectedBook(props) {
   return (
     <div>
       <Container>
-        <Card>
+        <Card bg="secondary" text="light">
           <Card.Body className="text-center">
             <Card.Img
-              style={{ height: "100px" }}
+              style={{ width: "60%" }}
               variant="right"
               src={props.imageUrl}
               className="mb-3"
@@ -26,7 +26,7 @@ export default function SelectedBook(props) {
 
             <Button
               className="mb-2"
-              variant="success"
+              variant="danger"
               // onClick={() =>
               //   chooseHandler(
               //     props.id,

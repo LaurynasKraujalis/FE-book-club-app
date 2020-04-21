@@ -1,7 +1,8 @@
 import React from "react";
-import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
+
 import { Container, Card } from "react-bootstrap";
+import Nav from "react-bootstrap/Nav";
 
 export default function HomepageDisplay(props) {
   const extractedRatings = Object.values(props.rating).map((keys, values) => {
@@ -19,9 +20,9 @@ export default function HomepageDisplay(props) {
   return (
     <div>
       <Container>
-        <Card>
+        <Card bg="secondary" text="light">
           <Card.Body className="text-center">
-            <Nav.Link as={NavLink} to="/books/:id">
+            <Nav.Link as={NavLink} to={`/books/${props.id}`}>
               <Card.Img
                 style={{ height: "100px" }}
                 variant="right"

@@ -16,7 +16,7 @@ export default function SelectedBook(props) {
   return (
     <div>
       <Container>
-        <Card bg="secondary" text="light">
+        <Card bg="secondary" text="light" border="danger">
           <Card.Body className="text-center">
             <Card.Img
               style={{ width: "60%" }}

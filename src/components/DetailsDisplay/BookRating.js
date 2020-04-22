@@ -22,7 +22,7 @@ export default function BookRating(props) {
   };
   return (
     <div>
-      <p>The rating is: {props.rating ? renderRating(props) : null} </p>
+      <div>The rating is: {props.rating ? renderRating(props) : null} </div>
       {/* <FontAwesomeIcon className="mr-3" icon={faStar} />
       <FontAwesomeIcon className="mr-3" icon={faStar} />
       <FontAwesomeIcon className="mr-3" icon={faStar} />

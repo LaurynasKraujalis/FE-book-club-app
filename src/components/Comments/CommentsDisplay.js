@@ -6,7 +6,6 @@ export default function CommentsDisplay(props) {
   return (
     <div>
       <Container>
-        Comments:
         <Card bg="secondary">
           <Card.Title>{props.userId}</Card.Title>
           <Card.Body>{props.comment}</Card.Body>

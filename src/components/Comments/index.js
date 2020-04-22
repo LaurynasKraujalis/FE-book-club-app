@@ -12,6 +12,7 @@ export default function Comments() {
   return (
     <div>
       <Container>
+        Comments
         {comments.map((comment) => {
           return (
             <div>

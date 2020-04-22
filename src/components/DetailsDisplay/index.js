@@ -29,7 +29,7 @@ export default function DetailsPage() {
           {bookDetails ? (
             <Col md="auto">
               {" "}
-              <Card bg="secondary" text="light">
+              <Card bg="secondary" text="light" border="danger">
                 <Card.Body className="text-center">
                   {" "}
                   <Card.Img

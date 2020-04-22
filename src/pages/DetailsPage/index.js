@@ -1,31 +1,20 @@
 import React from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { useParams } from "react-router-dom";
-
-// import { selectBookDetails } from "../../store/details/selectors";
-// import { fetchBookById } from "../../store/details/actions";
+import { useSelector } from "react-redux";
 
 import DetailsDisplay from "../../components/DetailsDisplay";
+import Comments from "../../components/Comments";
+import { selectComments } from "../../store/details/selectors";
 
 import Container from "react-bootstrap/Container";
 
-// import { Col, Card, Dropdown, DropdownButton, Row } from "react-bootstrap";
-
 export default function DetailsPage() {
-  // const dispatch = useDispatch();
-  // const { id } = useParams();
-  // const bookDetails = useSelector(selectBookDetails);
-
-  // useEffect(() => {
-  //   dispatch(fetchBookById(id));
-  // }, [dispatch, id]);
-
-  // console.log(bookDetails);
+  const comments = useSelector(selectComments);
 
   return (
     <div>
       <Container>
         <DetailsDisplay />
+        {comments ? <Comments /> : null}
       </Container>
     </div>
   );

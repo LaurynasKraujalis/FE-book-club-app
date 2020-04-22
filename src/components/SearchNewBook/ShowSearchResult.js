@@ -15,7 +15,7 @@ export default function ShowSearch(props) {
   return (
     <div>
       <Container>
-        <Card bg="secondary" text="light">
+        <Card bg="secondary" text="light" border="danger">
           <Card.Body className="text-center">
             <Card.Img
               style={{ height: "100px" }}

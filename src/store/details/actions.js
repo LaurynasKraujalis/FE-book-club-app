@@ -15,7 +15,7 @@ export const fetchBookById = (id) => {
   return async (dispatch, getState) => {
     try {
       const response = await axios.get(`${apiUrl}/books/${id}`);
-      console.log("RESPONSE FROM THE THUNK", response.data);
+
       dispatch(bookDetailsSuccess(response.data));
     } catch (error) {
       if (error.response) {
@@ -52,7 +52,6 @@ export const rateTheBook = (stars, id) => {
           },
         }
       );
-      console.log("rating response", response.data);
 
       dispatch(rateTheBookSuccess(response.data));
     } catch (error) {
@@ -91,7 +90,6 @@ export const postComment = (comment, id) => {
           },
         }
       );
-      console.log("New comment posted!", response.data);
 
       dispatch(commentPostSuccess(response.data));
     } catch (error) {

@@ -27,10 +27,10 @@ export const fetchBookById = (id) => {
   };
 };
 
-// const rateTheBookSuccess = (ratings) => ({
-//   type: BOOK_RATING_SUCCESS,
-//   payload: { ratings },
-// });
+const rateTheBookSuccess = (ratings) => ({
+  type: BOOK_RATING_SUCCESS,
+  payload: { ratings },
+});
 
 export const rateTheBook = (stars, id) => {
   return async (dispatch, getState) => {
@@ -47,7 +47,7 @@ export const rateTheBook = (stars, id) => {
       });
       console.log("rating response", response.data);
 
-      // dispatch(rateTheBookSuccess(response.data));
+      dispatch(rateTheBookSuccess(response.data));
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);

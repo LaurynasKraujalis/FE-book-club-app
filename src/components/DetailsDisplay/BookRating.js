@@ -32,6 +32,7 @@ export default function BookRating(props) {
   };
   return (
     <div>
+
       Avarage stars: {props.rating ? renderRating(props) : null}{" "}
       <OverlayTrigger
         trigger="click"
@@ -68,6 +69,7 @@ export default function BookRating(props) {
           Give Stars
         </Button>
       </OverlayTrigger>
+
       {/* <FontAwesomeIcon className="mr-3" icon={faStar} />
       <FontAwesomeIcon className="mr-3" icon={faStar} />
       <FontAwesomeIcon className="mr-3" icon={faStar} />

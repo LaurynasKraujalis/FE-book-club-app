@@ -20,7 +20,7 @@ export default function HomepageDisplay(props) {
   return (
     <div>
       <Container>
-        <Card bg="secondary" text="light">
+        <Card bg="secondary" text="light" border="danger">
           <Card.Body className="text-center">
             <Nav.Link as={NavLink} to={`/books/${props.id}`}>
               <Card.Img

@@ -38,7 +38,7 @@ export default function DetailsPage() {
                     src={bookDetails.imageUrl}
                     className="mb-3"
                   />
-                  <BookRating rating={bookDetails.ratings} />
+                  <BookRating rating={bookDetails.ratings} />{" "}
                   <Card.Title>{bookDetails.title}</Card.Title>
                   <Card.Title>{bookDetails.author}</Card.Title>
                   <Description description={bookDetails.description} />

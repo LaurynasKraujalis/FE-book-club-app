@@ -15,23 +15,25 @@ export const clearNewBook = () => ({
 export const postNewBook = (author, title, imageUrl, description) => {
   return async (dispatch, getState) => {
     const user = selectUser(getState());
+    const token = user.token;
     const authorString = author.join(", ");
-    console.log(
-      `what am I posting?`,
-      authorString,
-      title,
-      imageUrl,
-      description,
-      user
-    );
+
     try {
-      const response = await axios.post(`${apiUrl}/newbook`, {
-        author: authorString,
-        title,
-        imageUrl,
-        description,
-        userId: user.id,
-      });
+      const response = await axios.post(
+        `${apiUrl}/newbook`,
+        {
+          author: authorString,
+          title,
+          imageUrl,
+          description,
+          userId: user.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       console.log(response.data);
     } catch (error) {

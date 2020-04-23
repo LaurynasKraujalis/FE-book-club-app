@@ -36,15 +36,24 @@ export const rateTheBook = (stars, id) => {
   return async (dispatch, getState) => {
     const rating = parseInt(stars);
     const user = selectUser(getState());
+    const token = user.token;
 
     console.log("what am I sending?", rating, id, user.id);
 
     try {
-      const response = await axios.post(`${apiUrl}/books/${id}`, {
-        rating: rating,
-        bookId: id,
-        userId: user.id,
-      });
+      const response = await axios.post(
+        `${apiUrl}/books/${id}`,
+        {
+          rating: rating,
+          bookId: id,
+          userId: user.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       console.log("rating response", response.data);
 
       dispatch(rateTheBookSuccess(response.data));

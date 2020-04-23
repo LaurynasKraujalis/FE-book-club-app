@@ -40,7 +40,7 @@ export const rateTheBook = (stars, id) => {
 
     try {
       const response = await axios.post(
-        `${apiUrl}/books/${id}`,
+        `${apiUrl}/books/${id}/rating`,
         {
           rating: rating,
           bookId: id,
@@ -79,7 +79,7 @@ export const postComment = (comment, id) => {
 
     try {
       const response = await axios.post(
-        `${apiUrl}/books/${id}`,
+        `${apiUrl}/books/${id}/comment`,
         {
           comment: comment,
           bookId: id,

@@ -69,7 +69,7 @@ export const COMMENT_POST_SUCCESS = "COMMENT_POST_SUCCESS";
 
 const commentPostSuccess = (comment) => ({
   type: COMMENT_POST_SUCCESS,
-  payload: { comment },
+  payload: comment,
 });
 
 export const postComment = (comment, id) => {
@@ -79,7 +79,7 @@ export const postComment = (comment, id) => {
 
     try {
       const response = await axios.post(
-        `${apiUrl}/books/${id}/comment`,
+        `${apiUrl}/books/${id}/comments`,
         {
           comment: comment,
           bookId: id,

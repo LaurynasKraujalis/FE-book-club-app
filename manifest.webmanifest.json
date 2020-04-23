@@ -1,0 +1,22 @@
+{
+  "short_name": "SciFiA",
+  "name": "Science Fiction Amsterdam",
+  "description": "Bood club app for a Scifi book club",
+  "icons": [
+    {
+      "src": "/src/images/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/src/images/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/login",
+  "background_color": "#6c757d",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#6c757d"
+}

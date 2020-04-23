@@ -21,6 +21,7 @@ export default function SearchNewBook() {
     );
     console.log(response.data.items);
     setResults(response.data.items);
+    setSearch("");
     dispatch(clearNewBook());
   }
 
@@ -29,6 +30,7 @@ export default function SearchNewBook() {
       <div>
         <input
           type="text"
+          placeholder="Search here"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         ></input>
@@ -52,10 +54,7 @@ export default function SearchNewBook() {
               <ShowSearch
                 key={result.id}
                 id={result.id}
-                author={result.volumeInfo.authors}
-                title={result.volumeInfo.title}
-                imageUrl={result.volumeInfo.imageLinks.thumbnail}
-                description={result.volumeInfo.description}
+                volumeInfo={result.volumeInfo}
               />
             );
           })}

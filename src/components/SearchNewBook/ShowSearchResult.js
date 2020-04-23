@@ -17,14 +17,20 @@ export default function ShowSearch(props) {
       <Container>
         <Card bg="secondary" text="light" border="danger">
           <Card.Body className="text-center">
-            <Card.Img
-              style={{ height: "100px" }}
-              variant="right"
-              src={props.imageUrl}
-              className="mb-3"
-            />
-            <Card.Title>{props.title}</Card.Title>
-            <Card.Title>{props.author.join(", ")}</Card.Title>
+            {props.volumeInfo.imageLinks ? (
+              <Card.Img
+                style={{ height: "100px" }}
+                variant="right"
+                src={props.volumeInfo.imageLinks.thumbnail}
+                className="mb-3"
+              />
+            ) : null}
+            {props.volumeInfo.title ? (
+              <Card.Title>{props.volumeInfo.title}</Card.Title>
+            ) : null}
+            {props.volumeInfo.authors ? (
+              <Card.Title>{props.volumeInfo.authors.join(", ")}</Card.Title>
+            ) : null}
 
             <Button
               className="mb-2"
@@ -32,10 +38,10 @@ export default function ShowSearch(props) {
               onClick={() =>
                 chooseHandler(
                   props.id,
-                  props.author,
-                  props.title,
-                  props.imageUrl,
-                  props.description
+                  props.volumeInfo.authors,
+                  props.volumeInfo.title,
+                  props.volumeInfo.imageLinks.thumbnail,
+                  props.volumeInfo.description
                 )
               }
             >

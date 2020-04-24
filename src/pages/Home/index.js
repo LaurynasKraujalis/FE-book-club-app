@@ -11,6 +11,12 @@ export default function Homepage() {
   const dispatch = useDispatch();
   const allBooks = useSelector(selectAllBooks);
 
+  allBooks.sort(function (a, b) {
+    a = new Date(a.createdAt);
+    b = new Date(b.createdAt);
+    return a > b ? -1 : a < b ? 1 : 0;
+  });
+
   useEffect(() => {
     dispatch(getAllBooks());
   }, [dispatch]);

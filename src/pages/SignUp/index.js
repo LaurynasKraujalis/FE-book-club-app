@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { signUpThunk } from "../../store/user/actions";
+import { selectToken } from "../../store/user/selectors";
 
 import { Col, Button, Container, Form } from "react-bootstrap";
 
@@ -10,8 +11,15 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (token !== null) {
+      history.push("/");
+    }
+  }, [token, history]);
 
   function submitForm(event) {
     event.preventDefault();

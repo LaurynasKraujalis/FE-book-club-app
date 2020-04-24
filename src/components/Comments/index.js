@@ -21,8 +21,13 @@ export default function Comments() {
   const allComments = useSelector(selectComments);
   const { id } = useParams();
 
+  allComments.sort(function (a, b) {
+    a = new Date(a.createdAt);
+    b = new Date(b.createdAt);
+    return a > b ? -1 : a < b ? 1 : 0;
+  });
+
   const clickPost = (comment, id) => {
-    console.log(`whats in clickPost?`, comment, id);
     dispatch(postComment(comment, id));
   };
 

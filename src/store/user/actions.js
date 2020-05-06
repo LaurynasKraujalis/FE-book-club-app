@@ -2,6 +2,12 @@ import axios from "axios";
 
 import { apiUrl } from "../../config/constants";
 import { selectToken } from "./selectors";
+import {
+  appLoading,
+  appDoneLoading,
+  showMessageWithTimeout,
+  setMessage,
+} from "../appState/actions";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOG_OUT = "LOG_OUT";
@@ -66,19 +72,24 @@ export const logInThunk = (email, password) => {
 
 export const signUpThunk = (name, email, password) => {
   return async (dispatch, getState) => {
+    dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/signup`, {
         name,
         email,
         password,
       });
-      console.log(response);
+
       dispatch(loginSuccess(response.data));
+      dispatch(showMessageWithTimeout("success", true, "account created"));
+      dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
       } else {
         console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
       }
     }
   };

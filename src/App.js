@@ -10,6 +10,7 @@ import NewBook from "./pages/NewBook";
 import Navigation from "./components/Navigation/index";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
+import MessageBox from "./components/MessageBox";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <main className="main-background">
       <Navigation />
+      <MessageBox />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/books/:id" component={DetailsPage} />

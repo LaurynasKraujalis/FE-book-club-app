@@ -73,6 +73,7 @@ export default function Comments() {
         </Card>{" "}
       </Container>
       <Container>
+        <br />
         Comments
         {allComments.map((comment) => {
           return (
@@ -81,7 +82,7 @@ export default function Comments() {
                 key={comment.id}
                 id={comment.id}
                 comment={comment.comment}
-                userId={comment.userId}
+                userName={comment.userName}
               />
             </div>
           );

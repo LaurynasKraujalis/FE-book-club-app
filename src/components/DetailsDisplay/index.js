@@ -20,8 +20,6 @@ export default function DetailsPage() {
     dispatch(fetchBookById(id));
   }, [dispatch, id]);
 
-  console.log(bookDetails);
-
   return (
     <div>
       <Container>

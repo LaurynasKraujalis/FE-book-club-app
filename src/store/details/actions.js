@@ -97,19 +97,19 @@ const commentPostSuccess = (comment) => ({
 export const postComment = (comment, id) => {
   return async (dispatch, getState) => {
     const user = selectUser(getState());
-    const token = user.token;
 
     try {
       const response = await axios.post(
         `${apiUrl}/books/${id}/comments`,
         {
           comment: comment,
+          userName: user.name,
           bookId: id,
           userId: user.id,
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${user.token}`,
           },
         }
       );

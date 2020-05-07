@@ -2,6 +2,12 @@ import axios from "axios";
 import { apiUrl } from "../../config/constants";
 
 import { selectUser } from "../user/selectors";
+import {
+  appLoading,
+  appDoneLoading,
+  showMessageWithTimeout,
+  setMessage,
+} from "../appState/actions";
 
 export const BOOK_DETAILS_SUCCESS = "BOOK_DETAILS_SUCCESS";
 export const BOOK_RATING_SUCCESS = "BOOK_RATING_SUCCESS";
@@ -13,15 +19,19 @@ const bookDetailsSuccess = (bookDetails) => ({
 
 export const fetchBookById = (id) => {
   return async (dispatch, getState) => {
+    dispatch(appLoading());
     try {
       const response = await axios.get(`${apiUrl}/books/${id}`);
 
       dispatch(bookDetailsSuccess(response.data));
+      dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);
+        dispatch(appDoneLoading());
       } else {
         console.log(error);
+        dispatch(appDoneLoading());
       }
     }
   };
@@ -36,7 +46,7 @@ export const rateTheBook = (stars, id) => {
   return async (dispatch, getState) => {
     const rating = parseInt(stars);
     const user = selectUser(getState());
-    const token = user.token;
+    dispatch(appLoading());
 
     try {
       const response = await axios.post(
@@ -48,17 +58,30 @@ export const rateTheBook = (stars, id) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${user.token}`,
           },
         }
       );
 
       dispatch(rateTheBookSuccess(response.data));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          `${response.data.message}`,
+          3000
+        )
+      );
+      dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+        dispatch(appDoneLoading());
       } else {
         console.log(error);
+        dispatch(setMessage("danger", true, error.message));
+        dispatch(appDoneLoading());
       }
     }
   };
@@ -92,11 +115,21 @@ export const postComment = (comment, id) => {
       );
 
       dispatch(commentPostSuccess(response.data));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          `Successfully left a comment.`,
+          3000
+        )
+      );
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
       } else {
         console.log(error);
+        dispatch(setMessage("danger", true, error.message));
       }
     }
   };

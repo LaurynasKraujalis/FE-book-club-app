@@ -12,7 +12,6 @@ export default function BookRating(props) {
   const { id } = useParams();
   const [stars, setStars] = useState(0);
   const dispatch = useDispatch();
-  console.log(`stars`, stars);
 
   const renderRating = (props) => {
     const extractedRatings = Object.values(props.rating).map((keys, values) => {
@@ -26,13 +25,11 @@ export default function BookRating(props) {
       extractedRatings.reduce(add, 0) / extractedRatings.length
     );
 
-    console.log(`whats the rating?`, avarageRating);
-
     return <p>{avarageRating}</p>;
   };
+
   return (
     <div>
-
       Avarage stars: {props.rating ? renderRating(props) : null}{" "}
       <OverlayTrigger
         trigger="click"
@@ -69,7 +66,6 @@ export default function BookRating(props) {
           Give Stars
         </Button>
       </OverlayTrigger>
-
       {/* <FontAwesomeIcon className="mr-3" icon={faStar} />
       <FontAwesomeIcon className="mr-3" icon={faStar} />
       <FontAwesomeIcon className="mr-3" icon={faStar} />

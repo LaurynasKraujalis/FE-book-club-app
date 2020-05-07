@@ -6,9 +6,11 @@ export default function CommentsDisplay(props) {
   return (
     <div>
       <Container>
-        <Card bg="secondary">
-          <Card.Title>{props.userId}</Card.Title>
-          <Card.Body>{props.comment}</Card.Body>
+        <Card bg="secondary" text="light">
+          <Card.Subtitle style={{ color: "black" }}>
+            {props.userName}
+          </Card.Subtitle>
+          <Card.Body>{props.comment} </Card.Body>
         </Card>
       </Container>
     </div>

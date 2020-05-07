@@ -67,9 +67,11 @@ export const logInThunk = (email, password) => {
       if (error.response) {
         console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
+        dispatch(appDoneLoading());
       } else {
         console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
+        dispatch(appDoneLoading());
       }
     }
   };

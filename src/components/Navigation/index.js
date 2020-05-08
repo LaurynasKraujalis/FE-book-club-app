@@ -5,7 +5,7 @@ import NavbarItem from "./NavbarItem";
 import { logOut } from "../../store/user/actions";
 import { selectToken } from "../../store/user/selectors";
 
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 export default function Navigation() {
@@ -14,6 +14,9 @@ export default function Navigation() {
   const token = useSelector(selectToken);
   console.log(expanded);
   return (
+
+
+
     <Navbar
       collapseOnSelect
       bg="danger"
@@ -26,6 +29,7 @@ export default function Navigation() {
         onClick={() => setExpanded(expanded ? false : true)}
       />
       <Navbar.Collapse id="responsive-navbar-nav">
+
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
           {token ? (
@@ -36,6 +40,9 @@ export default function Navigation() {
             />
           ) : null}
 
+
+
+
           {token ? null : (
             <NavbarItem
               path="/login"
@@ -44,6 +51,7 @@ export default function Navigation() {
             />
           )}
 
+
           {token ? (
             <Button variant="danger" onClick={() => dispatch(logOut())}>
               Logout
@@ -51,7 +59,7 @@ export default function Navigation() {
           ) : null}
         </Nav>
       </Navbar.Collapse>
-      <Navbar.Collapse className="justify-content-end"></Navbar.Collapse>
+      {/* <Navbar.Collapse className="justify-content-end"></Navbar.Collapse> */}
     </Navbar>
   );
 }

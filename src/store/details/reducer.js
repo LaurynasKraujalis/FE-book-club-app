@@ -24,11 +24,14 @@ export default (state = initialState, action) => {
         comments: [...state.comments, action.payload],
       };
 
-    // case REACTION_POST_SUCCESS:
-    //   return {
-    //     ...state,
-    //     comments: [...state.comments, action.payload],
-    //   };
+    case REACTION_POST_SUCCESS:
+      const newEmojiObj = action.payload;
+      const newReactions = state.reactions.map((reaction) =>
+        reaction.id === newEmojiObj.commentId
+          ? { ...reaction, reactions: [...reaction.reactions, newEmojiObj] }
+          : reaction
+      );
+      return { ...state, comments: newReactions };
 
     default:
       return state;

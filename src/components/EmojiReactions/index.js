@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { useParams } from "react-router-dom";
 
 import { postReaction } from "../../store/details/actions";
 
@@ -12,10 +11,8 @@ export default function EmojiReactions(props) {
   const [react, setReact] = useState(false);
   const [reaction, setReaction] = useState("");
   const dispatch = useDispatch();
-  // const { id } = useParams();
 
   const sendReactionHandler = (reaction, commentId) => {
-    console.log(`what am I dispatching`, reaction, commentId);
     dispatch(postReaction(reaction, commentId));
     setReact(!react);
   };

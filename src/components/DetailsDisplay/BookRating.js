@@ -12,7 +12,6 @@ export default function BookRating(props) {
   const { id } = useParams();
   const [stars, setStars] = useState(0);
   const dispatch = useDispatch();
-  console.log(`stars`, stars);
 
   const renderRating = (props) => {
     const extractedRatings = Object.values(props.rating).map((keys, values) => {
@@ -25,8 +24,6 @@ export default function BookRating(props) {
     const avarageRating = Math.round(
       extractedRatings.reduce(add, 0) / extractedRatings.length
     );
-
-    console.log(`whats the rating?`, avarageRating);
 
     return <p>{avarageRating}</p>;
   };

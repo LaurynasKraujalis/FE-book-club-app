@@ -1,26 +1,89 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import { useSelector } from "react-redux";
 import { selectComments } from "../../store/details/selectors";
 import CommentsDisplay from "./CommentsDisplay";
 
-import { Container } from "react-bootstrap";
+import { postComment } from "../../store/details/actions";
+
+import {
+  Card,
+  Container,
+  Button,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
 
 export default function Comments() {
-  const comments = useSelector(selectComments);
-  console.log(comments);
+  const [click, setClick] = useState(false);
+  const [comment, setComment] = useState("");
+  const dispatch = useDispatch();
+  const allComments = useSelector(selectComments);
+  const { id } = useParams();
+
+  allComments.sort(function (a, b) {
+    a = new Date(a.createdAt);
+    b = new Date(b.createdAt);
+    return a > b ? -1 : a < b ? 1 : 0;
+  });
+
+  const clickPost = (comment, id) => {
+    dispatch(postComment(comment, id));
+  };
+
   return (
     <div>
       <Container>
+        <Card>
+          <Button
+            size="sm"
+            variant="danger"
+            onClick={() => {
+              setClick(!click);
+            }}
+          >
+            Leave a comment
+          </Button>{" "}
+          {click ? (
+            <div>
+              <InputGroup>
+                <InputGroup.Prepend>
+                  {/* <InputGroup.Text>With textarea</InputGroup.Text> */}
+                </InputGroup.Prepend>
+                <FormControl
+                  as="textarea"
+                  aria-label="With textarea"
+                  type="text"
+                  placeholder="Leave a comment"
+                  value={comment}
+                  onChange={(event) => setComment(event.target.value)}
+                />
+              </InputGroup>
+              <Card>
+                <Button
+                  size="sm"
+                  variant="danger"
+                  onClick={() => clickPost(comment, id)}
+                >
+                  Post!
+                </Button>
+              </Card>
+            </div>
+          ) : null}
+        </Card>{" "}
+      </Container>
+      <Container>
+        <br />
         Comments
-        {comments.map((comment) => {
+        {allComments.map((comment) => {
           return (
             <div>
               <CommentsDisplay
                 key={comment.id}
                 id={comment.id}
                 comment={comment.comment}
-                userId={comment.userId}
+                userName={comment.userName}
               />
             </div>
           );

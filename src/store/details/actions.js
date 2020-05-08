@@ -9,8 +9,9 @@ import {
   setMessage,
 } from "../appState/actions";
 
+// BOOK DETAILS
+
 export const BOOK_DETAILS_SUCCESS = "BOOK_DETAILS_SUCCESS";
-export const BOOK_RATING_SUCCESS = "BOOK_RATING_SUCCESS";
 
 const bookDetailsSuccess = (bookDetails) => ({
   type: BOOK_DETAILS_SUCCESS,
@@ -36,6 +37,10 @@ export const fetchBookById = (id) => {
     }
   };
 };
+
+// RATINGS
+
+export const BOOK_RATING_SUCCESS = "BOOK_RATING_SUCCESS";
 
 const rateTheBookSuccess = (ratings) => ({
   type: BOOK_RATING_SUCCESS,
@@ -87,6 +92,8 @@ export const rateTheBook = (stars, id) => {
   };
 };
 
+// COMMENTS
+
 export const COMMENT_POST_SUCCESS = "COMMENT_POST_SUCCESS";
 
 const commentPostSuccess = (comment) => ({
@@ -120,6 +127,56 @@ export const postComment = (comment, id) => {
           "success",
           false,
           `Successfully left a comment.`,
+          3000
+        )
+      );
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error);
+        dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  };
+};
+
+// REACTIONS
+
+export const REACTION_POST_SUCCESS = "REACTION_POST_SUCCESS";
+
+const reactionPostSuccess = (reaction) => ({
+  type: REACTION_POST_SUCCESS,
+  payload: reaction,
+});
+
+export const postReaction = (reaction, commentId) => {
+  return async (dispatch, getState) => {
+    const user = selectUser(getState());
+
+    try {
+      const response = await axios.post(
+        `${apiUrl}/books/:id/comments/reactions`,
+        {
+          reaction,
+          userName: user.name,
+          userId: user.id,
+          commentId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      console.log(`what do I get back from server?`, response.data);
+      dispatch(reactionPostSuccess(response.data));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          `Successfully reacted on a comment.`,
           3000
         )
       );

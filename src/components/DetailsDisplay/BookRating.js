@@ -27,7 +27,6 @@ export default function BookRating(props) {
 
     return <p>{avarageRating}</p>;
   };
-
   return (
     <div>
       Avarage stars: {props.rating ? renderRating(props) : null}{" "}

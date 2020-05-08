@@ -170,7 +170,7 @@ export const postReaction = (reaction, commentId) => {
           },
         }
       );
-      console.log(`what do I get back from server?`, response.data);
+
       dispatch(reactionPostSuccess(response.data));
       dispatch(
         showMessageWithTimeout(

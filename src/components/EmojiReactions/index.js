@@ -4,15 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { postReaction } from "../../store/details/actions";
 
-import {
-  Button,
-  Col,
-  Card,
-  Container,
-  Row,
-  InputGroup,
-  FormControl,
-} from "react-bootstrap";
+import { Button, Col, Row, InputGroup, FormControl } from "react-bootstrap";
 import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 

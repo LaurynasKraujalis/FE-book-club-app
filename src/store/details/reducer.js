@@ -24,11 +24,11 @@ export default (state = initialState, action) => {
         comments: [...state.comments, action.payload],
       };
 
-    case REACTION_POST_SUCCESS:
-      return {
-        ...state,
-        reactions: [...state.comments.reactions, action.payload],
-      };
+    // case REACTION_POST_SUCCESS:
+    //   return {
+    //     ...state,
+    //     comments: [...state.comments, action.payload],
+    //   };
 
     default:
       return state;

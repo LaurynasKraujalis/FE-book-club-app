@@ -26,10 +26,10 @@ export default (state = initialState, action) => {
 
     case REACTION_POST_SUCCESS:
       const newEmojiObj = action.payload;
-      const newReactions = state.reactions.map((reaction) =>
-        reaction.id === newEmojiObj.commentId
-          ? { ...reaction, reactions: [...reaction.reactions, newEmojiObj] }
-          : reaction
+      const newReactions = state.comments.map((comment) =>
+        comment.id === newEmojiObj.commentId
+          ? { ...comment, reactions: [...comment.reactions, newEmojiObj] }
+          : comment
       );
       return { ...state, comments: newReactions };
 

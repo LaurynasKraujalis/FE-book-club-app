@@ -30,7 +30,9 @@ export default function HomepageDisplay(props) {
                 className="mb-3"
               />
             </Nav.Link>
-            <Card.Subtitle>Rating: {avarageRating}</Card.Subtitle>
+            {avarageRating ? (
+              <Card.Subtitle>Rating: {avarageRating}</Card.Subtitle>
+            ) : null}
             <Card.Title>{props.title}</Card.Title>
             <Card.Title>{props.author}</Card.Title>
             <Card.Text>Chosen by: {props.user.name}</Card.Text>

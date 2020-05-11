@@ -25,7 +25,9 @@ export default function BookRating(props) {
       extractedRatings.reduce(add, 0) / extractedRatings.length
     );
 
-    return <p>{avarageRating}</p>;
+    return (
+      <span> {avarageRating ? <p>{avarageRating}</p> : "Not yet rated"}</span>
+    );
   };
   return (
     <div>

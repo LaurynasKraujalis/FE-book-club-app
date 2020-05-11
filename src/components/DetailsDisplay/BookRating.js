@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import { rateTheBook } from "../../store/details/actions";
 
 import { Button, OverlayTrigger, Popover } from "react-bootstrap";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faStar } from "@fortawesome/fontawesome-free-solid";
 
 export default function BookRating(props) {
   const { id } = useParams();
@@ -67,11 +65,6 @@ export default function BookRating(props) {
           Give Stars
         </Button>
       </OverlayTrigger>
-      {/* <FontAwesomeIcon className="mr-3" icon={faStar} />
-      <FontAwesomeIcon className="mr-3" icon={faStar} />
-      <FontAwesomeIcon className="mr-3" icon={faStar} />
-      <FontAwesomeIcon className="mr-3" icon={faStar} />
-      <FontAwesomeIcon className="mr-3" icon={faStar} /> */}
     </div>
   );
 }

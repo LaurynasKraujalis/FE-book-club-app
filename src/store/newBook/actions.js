@@ -41,7 +41,6 @@ export const postNewBook = (author, title, imageUrl, description) => {
         }
       );
 
-      console.log(response.data);
       dispatch(
         showMessageWithTimeout("success", false, "New book posted!", 3000)
       );

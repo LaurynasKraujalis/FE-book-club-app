@@ -48,9 +48,7 @@ export default function Comments() {
           {click ? (
             <div>
               <InputGroup>
-                <InputGroup.Prepend>
-                  {/* <InputGroup.Text>With textarea</InputGroup.Text> */}
-                </InputGroup.Prepend>
+                <InputGroup.Prepend></InputGroup.Prepend>
                 <FormControl
                   as="textarea"
                   aria-label="With textarea"

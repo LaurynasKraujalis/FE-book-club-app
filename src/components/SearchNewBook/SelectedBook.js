@@ -9,7 +9,6 @@ export default function SelectedBook(props) {
   const dispatch = useDispatch();
 
   const postHandler = (author, title, imageUrl, description) => {
-    console.log(`descri?`, description);
     dispatch(postNewBook(author, title, imageUrl, description));
   };
 

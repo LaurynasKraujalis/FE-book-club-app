@@ -12,11 +12,8 @@ export default function Navigation() {
   const [expanded, setExpanded] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
-  console.log(expanded);
+
   return (
-
-
-
     <Navbar
       collapseOnSelect
       bg="danger"
@@ -29,7 +26,6 @@ export default function Navigation() {
         onClick={() => setExpanded(expanded ? false : true)}
       />
       <Navbar.Collapse id="responsive-navbar-nav">
-
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
           {token ? (
@@ -40,9 +36,6 @@ export default function Navigation() {
             />
           ) : null}
 
-
-
-
           {token ? null : (
             <NavbarItem
               path="/login"
@@ -51,7 +44,6 @@ export default function Navigation() {
             />
           )}
 
-
           {token ? (
             <Button variant="danger" onClick={() => dispatch(logOut())}>
               Logout
@@ -59,7 +51,6 @@ export default function Navigation() {
           ) : null}
         </Nav>
       </Navbar.Collapse>
-      {/* <Navbar.Collapse className="justify-content-end"></Navbar.Collapse> */}
     </Navbar>
   );
 }

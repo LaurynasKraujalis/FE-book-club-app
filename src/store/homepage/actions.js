@@ -19,7 +19,6 @@ export const getAllBooks = () => {
       const response = await axios.get(`${apiUrl}/`);
       dispatch(allBooksSuccess(response.data));
       dispatch(appDoneLoading());
-      console.log(response.data);
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);

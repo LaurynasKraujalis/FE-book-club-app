@@ -19,7 +19,7 @@ export default function SearchNewBook() {
     const response = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=${search}`
     );
-    console.log(response.data.items);
+
     setResults(response.data.items);
     setSearch("");
     dispatch(clearNewBook());

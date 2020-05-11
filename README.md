@@ -38,32 +38,26 @@ Soon to be linked.
 ### Technologies used
 
 - Javascript
-- React
-  (https://github.com/LaurynasKraujalis/FE-book-club-app/blob/master/src/components/HomepageDisplay/index.js)
-- Redux
-  (https://github.com/LaurynasKraujalis/FE-book-club-app/tree/master/src/store/details)
+- [React](https://github.com/LaurynasKraujalis/FE-book-club-app/blob/master/src/components/HomepageDisplay/index.js)
+- [Redux](https://github.com/LaurynasKraujalis/FE-book-club-app/tree/master/src/store/details)
 - Sequelize
-- Express
-  - REST API
-- Axios
+- [Express](https://github.com/LaurynasKraujalis/BE-book-club-app/blob/master/index.js)
+  - [REST API](https://github.com/LaurynasKraujalis/BE-book-club-app/blob/master/routers/detailsRouter.js)
+- [Axios](https://github.com/LaurynasKraujalis/FE-book-club-app/blob/master/src/components/SearchNewBook/index.js)
   - Google Books API
-    (https://github.com/LaurynasKraujalis/FE-book-club-app/blob/master/src/components/SearchNewBook/index.js)
-- Progressive Web App
-  (https://github.com/LaurynasKraujalis/FE-book-club-app/blob/master/manifest.webmanifest.json)
+- [Progressive Web App](https://github.com/LaurynasKraujalis/FE-book-club-app/blob/master/manifest.webmanifest.json)
 
 Explored and used lilbraries:
 
-- Emoji-mart (Emojipicker)
+- Emoji-mart [(Emojipicker)](https://github.com/LaurynasKraujalis/FE-book-club-app/blob/master/src/components/EmojiReactions/index.js)
 - React-Bootstrap
 
 ### Git Workflow
 
 During this project my goal was to:
 
-- Write clear Commit messages
-  (https://github.com/LaurynasKraujalis/FE-book-club-app/commits/master)
-- Work with well named branches
-  (https://github.com/LaurynasKraujalis/FE-book-club-app/branches/yours)
+- [Write clear Commit messages](https://github.com/LaurynasKraujalis/FE-book-club-app/commits/master)
+- [Work with well named branches](https://github.com/LaurynasKraujalis/FE-book-club-app/branches/yours)
 - Create pull requests with short summaries
 - Never push to master
 

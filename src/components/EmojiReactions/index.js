@@ -48,6 +48,7 @@ export default function EmojiReactions(props) {
               aria-label="Small"
               aria-describedby="inputGroup-sizing-sm"
               value={reaction}
+              onChange={(event) => setReaction(event.target.value)}
             />
           </InputGroup>
         ) : null}

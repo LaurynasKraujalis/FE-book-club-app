@@ -40,7 +40,7 @@ export const postNewBook = (author, title, imageUrl, description) => {
           },
         }
       );
-
+      console.log("New posted book", response);
       dispatch(
         showMessageWithTimeout("success", false, "New book posted!", 3000)
       );

@@ -99,6 +99,7 @@ export const COMMENT_POST_SUCCESS = "COMMENT_POST_SUCCESS";
 const commentPostSuccess = (comment) => ({
   type: COMMENT_POST_SUCCESS,
   payload: comment,
+  reactions: [],
 });
 
 export const postComment = (comment, id) => {
@@ -120,6 +121,8 @@ export const postComment = (comment, id) => {
           },
         }
       );
+
+      response.data.reactions = [];
 
       dispatch(commentPostSuccess(response.data));
       dispatch(

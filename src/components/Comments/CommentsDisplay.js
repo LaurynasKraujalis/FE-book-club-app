@@ -13,7 +13,8 @@ export default function CommentsDisplay(props) {
           <Card.Subtitle style={{ color: "black" }}>
             {props.userName}
           </Card.Subtitle>
-          <Card.Body>{props.comment} </Card.Body>
+          <Card.Body>{props.comment} </Card.Body>{" "}
+          <Card.Subtitle style={{ color: "black" }}>Reactions</Card.Subtitle>
           <ReactionDisplay key={props.id} commentId={props.id} />
         </Card>
       </Container>

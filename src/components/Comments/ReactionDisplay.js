@@ -15,9 +15,11 @@ export default function ReactionDisplay(props) {
   return (
     <div>
       <Container>
-        {emojiReaction.map((emoji) => {
-          return <span> {emoji.reaction}</span>;
-        })}
+        {emojiReaction
+          ? emojiReaction.map((emoji) => {
+              return <span> {emoji.reaction}</span>;
+            })
+          : null}
       </Container>
 
       <br />

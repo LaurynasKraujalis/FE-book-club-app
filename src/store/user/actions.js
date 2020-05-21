@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { apiUrl } from "../../config/constants";
-import { selectToken } from "./selectors";
+import { selectToken, selectUser } from "./selectors";
 import {
   appLoading,
   appDoneLoading,
@@ -97,6 +97,55 @@ export const signUpThunk = (name, email, password) => {
       } else {
         console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  };
+};
+
+// Update user info
+
+// export const USER_MOTTO_SUCCESS = "USER_MOTTO_SUCCESS";
+
+// const updateUserMottoSuccess = (motto) => ({
+//   type: USER_MOTTO_SUCCESS,
+
+// });
+
+export const updateUserMotto = (motto) => {
+  return async (dispatch, getState) => {
+    const user = selectUser(getState());
+    dispatch(appLoading());
+
+    try {
+      const response = await axios.post(
+        `${apiUrl}/myprofile/motto`,
+        { motto, id: user.id },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      // dispatch(updateUserMottoSuccess(response.data));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          `${response.data.message}`,
+          3000
+        )
+      );
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+        dispatch(appDoneLoading());
+      } else {
+        console.log(error);
+        dispatch(setMessage("danger", true, error.message));
+        dispatch(appDoneLoading());
       }
     }
   };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectUser } from "../../store/user/selectors";
+import { updateUserMotto } from "../../store/user/actions";
 
 import {
   Col,
@@ -14,11 +15,16 @@ import {
 } from "react-bootstrap";
 
 export default function MyProfile() {
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [profileImage, setProfileImage] = useState("");
   const [userMotto, setUserMotto] = useState("");
   console.log("image", profileImage);
   console.log("motto", userMotto);
+
+  const mottoHandler = (motto) => {
+    dispatch(updateUserMotto(motto));
+  };
 
   return (
     <div>
@@ -41,7 +47,9 @@ export default function MyProfile() {
 
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
-          <Button variant="danger">Change motto</Button>
+          <Button variant="danger" onClick={() => mottoHandler(userMotto)}>
+            Change motto
+          </Button>
         </InputGroup.Prepend>
         <FormControl
           aria-describedby="basic-addon1"

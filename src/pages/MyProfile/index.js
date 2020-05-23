@@ -17,12 +17,9 @@ import {
 export default function MyProfile() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const [profileImage, setProfileImage] = useState("");
+
   const [userMotto, setUserMotto] = useState("");
-  const [image, setImage] = useState("");
-  console.log("image", profileImage);
-  console.log("motto", userMotto);
-  console.log("photo", image);
+
   const mottoHandler = (motto) => {
     dispatch(updateUserMotto(motto));
   };
@@ -39,9 +36,7 @@ export default function MyProfile() {
       var reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = function () {
-        const imageBase64 = reader.result.split(",")[1];
-        console.log(imageBase64);
-        dispatch(updateUserImage(imageBase64));
+        dispatch(updateUserImage(reader.result));
       };
       reader.onerror = function (error) {
         console.log("Error: ", error);
@@ -61,7 +56,7 @@ export default function MyProfile() {
           <Image src={user.image} fluid />
         </Col>
       </Container>
-      <InputGroup className="mb-3">
+      {/* <InputGroup className="mb-3">
         <InputGroup.Prepend>
           <Button variant="danger">New image URL</Button>
         </InputGroup.Prepend>
@@ -70,7 +65,7 @@ export default function MyProfile() {
           value={profileImage}
           onChange={(event) => setProfileImage(event.target.value)}
         />
-      </InputGroup>
+      </InputGroup> */}
 
       <InputGroup className="mb-3">
         <InputGroup.Prepend>

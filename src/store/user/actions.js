@@ -150,3 +150,50 @@ export const updateUserMotto = (motto) => {
     }
   };
 };
+
+// export const USER_IMAGE_SUCCESS = "USER_IMAGE_SUCCESS";
+
+// const updateUserImageSuccess = (image) => ({
+//   type: USER_IMAGE_SUCCESS,
+
+// });
+
+export const updateUserImage = (image) => {
+  return async (dispatch, getState) => {
+    const user = selectUser(getState());
+    dispatch(appLoading());
+
+    try {
+      const response = await axios.post(
+        `${apiUrl}/myprofile/image`,
+        { image, id: user.id },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      // dispatch(updateUserImageSuccess(response.data));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          `${response.data.message}`,
+          3000
+        )
+      );
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+        dispatch(appDoneLoading());
+      } else {
+        console.log(error);
+        dispatch(setMessage("danger", true, error.message));
+        dispatch(appDoneLoading());
+      }
+    }
+  };
+};

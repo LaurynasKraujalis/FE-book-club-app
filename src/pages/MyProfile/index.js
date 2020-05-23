@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectUser } from "../../store/user/selectors";
-import { updateUserMotto } from "../../store/user/actions";
+import { updateUserMotto, updateUserImage } from "../../store/user/actions";
 
 import {
   Col,
@@ -19,15 +19,42 @@ export default function MyProfile() {
   const user = useSelector(selectUser);
   const [profileImage, setProfileImage] = useState("");
   const [userMotto, setUserMotto] = useState("");
+  const [image, setImage] = useState("");
   console.log("image", profileImage);
   console.log("motto", userMotto);
-
+  console.log("photo", image);
   const mottoHandler = (motto) => {
     dispatch(updateUserMotto(motto));
   };
 
+  const buttonHandler = () => {
+    document.getElementById("button").addEventListener("click", function () {
+      var files = document.getElementById("file").files;
+      if (files.length > 0) {
+        getBase64(files[0]);
+      }
+    });
+
+    function getBase64(file) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        const imageBase64 = reader.result.split(",")[1];
+        console.log(imageBase64);
+        dispatch(updateUserImage(imageBase64));
+      };
+      reader.onerror = function (error) {
+        console.log("Error: ", error);
+      };
+    }
+  };
+
   return (
     <div>
+      <input id="file" type="file" accept="image/x-png,image/jpeg,image/gif" />
+      <button id="button" onClick={buttonHandler}>
+        send pic
+      </button>
       <Container>
         <Col md="auto">
           Profile image

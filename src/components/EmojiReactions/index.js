@@ -21,7 +21,7 @@ export default function EmojiReactions(props) {
     <div>
       <Row>
         <Col>
-          <Button size="sm" onClick={() => setReact(!react)}>
+          <Button variant="danger" size="sm" onClick={() => setReact(!react)}>
             React!
           </Button>
         </Col>

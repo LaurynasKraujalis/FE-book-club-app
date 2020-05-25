@@ -28,6 +28,7 @@ export default function Navigation() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
+          <NavbarItem path="/members" linkText="Members" />
           {token ? (
             <NavbarItem
               path="/newbook"

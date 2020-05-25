@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import MessageBox from "./components/MessageBox";
 import LoadingSpinner from "./components/LoadingSpinner";
+import Members from "./pages/Members";
 
 import "./App.css";
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/books/:id" component={DetailsPage} />
         <Route path="/newbook" component={NewBook} />
         <Route path="/myprofile" component={MyProfile} />
+        <Route path="/members" component={Members} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={LogIn} />
       </Switch>

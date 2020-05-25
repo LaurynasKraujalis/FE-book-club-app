@@ -1,17 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-
-import { getAllBooksByUser } from "../../store/members/actions";
 
 import { Container, Card, Button } from "react-bootstrap";
 
 export default function MembersDisplay(props) {
   const [booksExpand, setBooksExpand] = useState(false);
-  const dispatch = useDispatch();
-  const booksByUserHandler = (userName) => {
-    setBooksExpand(!booksExpand);
-    dispatch(getAllBooksByUser(userName));
-  };
 
   return (
     <div>
@@ -29,7 +21,7 @@ export default function MembersDisplay(props) {
             <Card.Text>- {props.motto}</Card.Text>
             <Button
               variant="danger"
-              onClick={() => booksByUserHandler(props.name)}
+              onClick={() => setBooksExpand(!booksExpand)}
             >
               Books chosen by {props.name}
             </Button>

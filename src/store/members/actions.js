@@ -33,35 +33,3 @@ export const getAllMembers = () => {
     }
   };
 };
-
-export const GET_ALL_BOOKS_BY_USER = "GET_ALL_BOOKS_BY_USER";
-
-const allBooksByUser = (allBooksByUser) => {
-  return {
-    type: GET_ALL_BOOKS_BY_USER,
-    payload: allBooksByUser,
-  };
-};
-
-export const getAllBooksByUser = (name) => {
-  return async (dispatch, getState) => {
-    dispatch(appLoading());
-    console.log(`whats name`, name);
-    try {
-      const response = await axios.get(`${apiUrl}/members/booksbyuser/${name}`);
-      console.log(response.data);
-      dispatch(allBooksByUser(response.data));
-      dispatch(appDoneLoading());
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage("danger", true, error.response.data.message));
-        dispatch(appDoneLoading());
-      } else {
-        console.log(error.message);
-        dispatch(setMessage("danger", true, error.message));
-        dispatch(appDoneLoading());
-      }
-    }
-  };
-};

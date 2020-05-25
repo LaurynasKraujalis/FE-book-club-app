@@ -24,31 +24,31 @@ export default function MyProfile() {
     dispatch(updateUserMotto(motto));
   };
 
+  function getBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      dispatch(updateUserImage(reader.result));
+    };
+    reader.onerror = function (error) {
+      console.log("Error: ", error);
+    };
+  }
+
   const buttonHandler = () => {
     document.getElementById("button").addEventListener("click", function () {
-      var files = document.getElementById("file").files;
+      const files = document.getElementById("file").files;
       if (files.length > 0) {
         getBase64(files[0]);
       }
     });
-
-    function getBase64(file) {
-      var reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = function () {
-        dispatch(updateUserImage(reader.result));
-      };
-      reader.onerror = function (error) {
-        console.log("Error: ", error);
-      };
-    }
   };
 
   return (
     <div>
       <input id="file" type="file" accept="image/x-png,image/jpeg,image/gif" />
       <button id="button" onClick={buttonHandler}>
-        send pic
+        Upload
       </button>
       <Container>
         <Col md="auto">
@@ -56,16 +56,6 @@ export default function MyProfile() {
           <Image src={user.image} fluid />
         </Col>
       </Container>
-      {/* <InputGroup className="mb-3">
-        <InputGroup.Prepend>
-          <Button variant="danger">New image URL</Button>
-        </InputGroup.Prepend>
-        <FormControl
-          aria-describedby="basic-addon1"
-          value={profileImage}
-          onChange={(event) => setProfileImage(event.target.value)}
-        />
-      </InputGroup> */}
 
       <InputGroup className="mb-3">
         <InputGroup.Prepend>

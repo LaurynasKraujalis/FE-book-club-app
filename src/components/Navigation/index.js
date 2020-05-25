@@ -5,7 +5,7 @@ import NavbarItem from "./NavbarItem";
 import { logOut } from "../../store/user/actions";
 import { selectToken } from "../../store/user/selectors";
 
-import { Navbar, NavDropdown, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 export default function Navigation() {

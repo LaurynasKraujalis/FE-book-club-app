@@ -9,6 +9,8 @@ import {
   setMessage,
 } from "../appState/actions";
 
+// LOGIN & LOGOUT
+
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOG_OUT = "LOG_OUT";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
@@ -104,12 +106,12 @@ export const signUpThunk = (name, email, password) => {
 
 // Update user info
 
-// export const USER_MOTTO_SUCCESS = "USER_MOTTO_SUCCESS";
+export const USER_MOTTO_SUCCESS = "USER_MOTTO_SUCCESS";
 
-// const updateUserMottoSuccess = (motto) => ({
-//   type: USER_MOTTO_SUCCESS,
-
-// });
+const updateUserMottoSuccess = (motto) => ({
+  type: USER_MOTTO_SUCCESS,
+  payload: motto,
+});
 
 export const updateUserMotto = (motto) => {
   return async (dispatch, getState) => {
@@ -127,7 +129,7 @@ export const updateUserMotto = (motto) => {
         }
       );
       console.log(response.data);
-      // dispatch(updateUserMottoSuccess(response.data));
+      dispatch(updateUserMottoSuccess(response.data.userInfo));
       dispatch(
         showMessageWithTimeout(
           "success",
@@ -151,12 +153,12 @@ export const updateUserMotto = (motto) => {
   };
 };
 
-// export const USER_IMAGE_SUCCESS = "USER_IMAGE_SUCCESS";
+export const USER_IMAGE_SUCCESS = "USER_IMAGE_SUCCESS";
 
-// const updateUserImageSuccess = (image) => ({
-//   type: USER_IMAGE_SUCCESS,
-
-// });
+const updateUserImageSuccess = (image) => ({
+  type: USER_IMAGE_SUCCESS,
+  payload: image,
+});
 
 export const updateUserImage = (image) => {
   return async (dispatch, getState) => {
@@ -174,7 +176,7 @@ export const updateUserImage = (image) => {
         }
       );
       console.log(response.data);
-      // dispatch(updateUserImageSuccess(response.data));
+      dispatch(updateUserImageSuccess(response.data.userInfo));
       dispatch(
         showMessageWithTimeout(
           "success",

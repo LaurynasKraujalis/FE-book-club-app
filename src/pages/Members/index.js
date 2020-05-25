@@ -23,6 +23,7 @@ export default function MembersPage() {
             name={member.name}
             image={member.image}
             motto={member.motto}
+            allBooks={member.books}
           />
         );
       })}

@@ -4,6 +4,9 @@ import { Container, Card, Button } from "react-bootstrap";
 
 export default function MembersDisplay(props) {
   const [booksExpand, setBooksExpand] = useState(false);
+  const allBookTitles = props.allBooks.map((book) => {
+    return book.title;
+  });
 
   return (
     <div>
@@ -25,6 +28,9 @@ export default function MembersDisplay(props) {
             >
               Books chosen by {props.name}
             </Button>
+            {booksExpand ? (
+              <Card.Text>{allBookTitles.join(", ")}</Card.Text>
+            ) : null}
           </Card.Body>
         </Card>
       </Container>

@@ -1,4 +1,10 @@
-import { LOGIN_SUCCESS, LOG_OUT, TOKEN_STILL_VALID } from "./actions";
+import {
+  LOGIN_SUCCESS,
+  LOG_OUT,
+  TOKEN_STILL_VALID,
+  USER_IMAGE_SUCCESS,
+  USER_MOTTO_SUCCESS,
+} from "./actions";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -18,6 +24,11 @@ export default (state = initialState, action) => {
 
     case TOKEN_STILL_VALID:
       return { ...state, ...action.payload };
+
+    case USER_IMAGE_SUCCESS:
+      return { ...state, image: action.payload.image };
+    case USER_MOTTO_SUCCESS:
+      return { ...state, motto: action.payload.motto };
 
     default:
       return state;

@@ -43,6 +43,13 @@ export default function Navigation() {
               onClick={() => setExpanded(false)}
             />
           )}
+          {token ? (
+            <NavbarItem
+              path="/myprofile"
+              linkText="My profile"
+              onClick={() => setExpanded(false)}
+            />
+          ) : null}
 
           {token ? (
             <Button variant="danger" onClick={() => dispatch(logOut())}>

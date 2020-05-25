@@ -12,15 +12,8 @@ export default function ReactionDisplay(props) {
   });
   const emojiReaction = specificComment[0].reactions;
 
-  return (
-    <div>
-      <Container>
-        {emojiReaction.map((emoji) => {
-          return <span> {emoji.reaction}</span>;
-        })}
-      </Container>
-
-      <br />
-    </div>
-  );
+  const allReactions = emojiReaction.map((emoji) => {
+    return <p key={emoji.id}>{emoji.reaction}</p>;
+  });
+  return <Container>{allReactions}</Container>;
 }

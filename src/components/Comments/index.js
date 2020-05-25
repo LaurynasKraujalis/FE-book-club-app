@@ -76,14 +76,12 @@ export default function Comments() {
         Comments
         {allComments.map((comment) => {
           return (
-            <div>
-              <CommentsDisplay
-                key={comment.id}
-                id={comment.id}
-                comment={comment.comment}
-                userName={comment.userName}
-              />
-            </div>
+            <CommentsDisplay
+              key={comment.id}
+              id={comment.id}
+              comment={comment.comment}
+              userName={comment.userName}
+            />
           );
         })}
       </Container>

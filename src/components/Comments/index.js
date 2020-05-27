@@ -30,6 +30,8 @@ export default function Comments() {
 
   const clickPost = (comment, id) => {
     dispatch(postComment(comment, id));
+    setClick(!click);
+    setComment("");
   };
 
   return (

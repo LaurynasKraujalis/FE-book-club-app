@@ -13,12 +13,16 @@ export default function MembersDisplay(props) {
       <Container>
         <Card bg="secondary" text="light" border="danger">
           <Card.Body className="text-center">
-            <Card.Img
-              style={{ height: "100px" }}
-              variant="right"
-              src={props.image}
-              className="mb-3"
-            />
+            {props.image ? (
+              <Card.Img
+                style={{ height: "100px" }}
+                variant="right"
+                src={props.image}
+                className="mb-3"
+              />
+            ) : (
+              <Card.Img src="https://lh3.googleusercontent.com/proxy/c8caEZVqraeDIvTjfOetJ4Hvs5TWYYLFjDMQ_Q2HqmWQVT1noKLY2ivlFbN0dmgWLtGDOmI06ZCHGR7Dqc8o1ML1" />
+            )}
             <Card.Title>{props.name}</Card.Title>
 
             <Card.Text>- {props.motto}</Card.Text>

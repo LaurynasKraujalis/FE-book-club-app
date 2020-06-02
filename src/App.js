@@ -26,20 +26,22 @@ function App() {
   }, [dispatch]);
 
   return (
-    <main className="main-background">
-      <Navigation />
-      <MessageBox />
-      {isLoading ? <LoadingSpinner /> : null}
-      <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route path="/books/:id" component={DetailsPage} />
-        <Route path="/newbook" component={NewBook} />
-        <Route path="/myprofile" component={MyProfile} />
-        <Route path="/members" component={Members} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/login" component={LogIn} />
-      </Switch>
-    </main>
+    <body>
+      <main>
+        <Navigation />
+        <MessageBox />
+        {isLoading ? <LoadingSpinner /> : null}
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/books/:id" component={DetailsPage} />
+          <Route path="/newbook" component={NewBook} />
+          <Route path="/myprofile" component={MyProfile} />
+          <Route path="/members" component={Members} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={LogIn} />
+        </Switch>
+      </main>
+    </body>
   );
 }
 

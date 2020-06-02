@@ -12,7 +12,9 @@ import {
   FormControl,
   Container,
   Card,
+  Jumbotron,
 } from "react-bootstrap";
+import "./index.css";
 
 export default function MyProfile() {
   const dispatch = useDispatch();
@@ -46,14 +48,31 @@ export default function MyProfile() {
 
   return (
     <div>
-      <input id="file" type="file" accept="image/x-png,image/jpeg,image/gif" />
-      <button id="button" onClick={buttonHandler}>
+      <Jumbotron>
+        <h4>Pimp your profile</h4>
+        <p>Add a picture or change your motto!</p>
+      </Jumbotron>
+
+      <input
+        id="file"
+        className="fileSelect"
+        type="file"
+        accept="image/x-png,image/jpeg,image/gif"
+      />
+      <button id="button" className="uploadButton" onClick={buttonHandler}>
         Upload
       </button>
       <Container>
         <Col md="auto">
           Profile image
-          <Image src={user.image} fluid />
+          {user.image ? (
+            <Image src={user.image} fluid />
+          ) : (
+            <Image
+              src="https://lh3.googleusercontent.com/proxy/c8caEZVqraeDIvTjfOetJ4Hvs5TWYYLFjDMQ_Q2HqmWQVT1noKLY2ivlFbN0dmgWLtGDOmI06ZCHGR7Dqc8o1ML1"
+              fluid
+            />
+          )}
         </Col>
       </Container>
 

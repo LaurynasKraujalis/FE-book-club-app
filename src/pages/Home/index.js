@@ -5,7 +5,7 @@ import HomepageDisplay from "../../components/HomepageDisplay";
 import { getAllBooks } from "../../store/homepage/actions";
 import { selectAllBooks } from "../../store/homepage/selectors";
 
-import { Container } from "react-bootstrap";
+import { Container, Jumbotron } from "react-bootstrap";
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -22,21 +22,32 @@ export default function Homepage() {
   }, [dispatch]);
 
   return (
-    <Container>
-      {" "}
-      {allBooks.map((book) => {
-        return (
-          <HomepageDisplay
-            key={book.id}
-            id={book.id}
-            author={book.author}
-            imageUrl={book.imageUrl}
-            title={book.title}
-            rating={book.ratings}
-            user={book.user}
-          />
-        );
-      })}
-    </Container>
+    <main>
+      <Jumbotron>
+        <h4>Welcome to Scifi Amsterdam!</h4>
+        <p>
+          Here you can find the book we are currently reading and the previous
+          books as well.
+        </p>
+      </Jumbotron>
+      <>
+        <Container>
+          {" "}
+          {allBooks.map((book) => {
+            return (
+              <HomepageDisplay
+                key={book.id}
+                id={book.id}
+                author={book.author}
+                imageUrl={book.imageUrl}
+                title={book.title}
+                rating={book.ratings}
+                user={book.user}
+              />
+            );
+          })}
+        </Container>
+      </>
+    </main>
   );
 }

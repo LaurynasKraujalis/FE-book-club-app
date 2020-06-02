@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getAllMembers } from "../../store/members/actions";
 import { selectAllMembers } from "../../store/members/selectors";
-
 import MembersDisplay from "../../components/MembersDisplay";
+
+import { Jumbotron } from "react-bootstrap";
 
 export default function MembersPage() {
   const dispatch = useDispatch();
@@ -16,6 +17,11 @@ export default function MembersPage() {
 
   return (
     <div>
+      <Jumbotron>
+        <h4>Check out our Scifi members!</h4>
+        <p>We're a diverse bunch who share the love for great books.</p>
+      </Jumbotron>
+
       {allMembers.map((member) => {
         return (
           <MembersDisplay
